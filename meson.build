@@ -24,7 +24,7 @@ check_dep = dependency('check')
 inc_dirs = include_directories('include')
 
 # Source files
-src_files = files('src/graphics.c')
+src_files = files('src/fs.c', 'src/graphics.c')
 
 # Library
 ymir = library('ymir',
@@ -42,10 +42,10 @@ test_executable = executable(
 test('test_graphics', test_executable)
 
 # Installation
-install_headers('include/graphics.h', subdir : 'ymir')
-#install_data('version.h', subdir : 'ymir')
-#install_man('docs/ymir.1')
+header_files = files('include/fs.h', 'include/graphics.h')
+install_headers(header_files, subdir : 'ymir')
+#install_man, install_data
 
 # Configuration
-configure_file(output : 'config.h', configuration : conf)
+#configure_file(output : 'config.h', configuration : conf)
 
