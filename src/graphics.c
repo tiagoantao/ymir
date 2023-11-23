@@ -90,3 +90,12 @@ void write_png(const char *filename, pixel_t **image, int height, int width) {
     if (png && info)
         png_destroy_write_struct(&png, &info);
 }
+
+
+pixel_t **alloc_image(int height, int width) {
+    pixel_t **image = (pixel_t **)malloc(height * sizeof(pixel_t *));
+    for (int y = 0; y < height; y++) {
+        image[y] = (pixel_t *)malloc(width * sizeof(pixel_t));
+    }
+    return image;
+}
