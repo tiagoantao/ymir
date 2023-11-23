@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "graphics.h"
+#include "ymir/graphics.h"
 
 
 void read_png(const char *filename, pixel_t ***out_image, int *out_height, int *out_width) {

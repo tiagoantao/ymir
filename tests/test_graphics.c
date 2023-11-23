@@ -3,8 +3,8 @@
 
 #include <check.h>
 
-#include "fs.h"
-#include "graphics.h"
+#include "ymir/fs.h"
+#include "ymir/graphics.h"
 
 START_TEST(test_write_png) {
     int width = 100;
