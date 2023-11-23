@@ -42,7 +42,7 @@ test_executable = executable(
 test('test_graphics', test_executable)
 
 # Installation
-header_files = files('include/fs.h', 'include/graphics.h')
+header_files = files('include/ymir/fs.h', 'include/ymir/graphics.h')
 install_headers(header_files, subdir : 'ymir')
 #install_man, install_data
 
