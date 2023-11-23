@@ -22,6 +22,8 @@ meson compile
 meson test
 ```
 
+Coverage results are produced in `build/coverage.xml`
+
 
 ## Sanitizer and Valgrind use
 
@@ -44,7 +46,7 @@ Specified as Debian-based dependencies. Similar packages should exist
 for other Linuxes (and *nix derivatives).
 
 ```sh
-apt-get install meson ninja-build check doxygen
+apt-get install meson ninja-build check doxygen gcovr
 
 apt-get install libpng
 ```
