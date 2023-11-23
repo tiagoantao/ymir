@@ -1,0 +1,1 @@
+option('use_sanitizer', type : 'string', value : 'none', description : 'Choose sanitizer type')

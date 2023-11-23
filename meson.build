@@ -2,6 +2,17 @@ project('ymir', 'c',
   version : '0.0.1',
   default_options : ['warning_level=3'])
 
+# Sanitizers
+sanitizer = get_option('use_sanitizer')
+
+c_args = []
+link_args = []
+
+if sanitizer == 'address'
+  c_args += ['-fsanitize=address']
+  link_args += ['-fsanitize=address']
+endif
+
 # Versioning
 project_version = meson.project_version()
 version_array = project_version.split('.')
@@ -29,6 +40,7 @@ src_files = files('src/fs.c', 'src/graphics.c')
 # Library
 ymir = library('ymir',
   src_files, include_directories : inc_dirs, install : true,
+  c_args : c_args, link_args : link_args,
   dependencies : [png_dep])
 
 
@@ -38,6 +50,7 @@ test_executable = executable(
   'test_executable', test_files,
   include_directories : inc_dirs,
   link_with: ymir,
+  c_args : c_args, link_args : link_args,
   dependencies : [check_dep])
 test('test_graphics', test_executable)
 

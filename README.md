@@ -12,7 +12,7 @@ Tested on Linux only.
 
 
 
-```
+```sh
 meson setup build
 
 cd build
@@ -22,18 +22,30 @@ meson compile
 meson test
 ```
 
+
+## Sanitizer use
+
+Build with:
+
+```sh
+meson setup build -Duse_sanitizer=address
+```
+
+
+
 # Requirements
 
 Specified as Debian-based dependencies. Similar packages should exist
 for other Linuxes (and *nix derivatives).
 
-```
-apt-get install meson ninja-build check
+```sh
+apt-get install meson ninja-build check doxygen
 
-apt-get install glib-2 libpng
+apt-get install libpng
 ```
 
 # TODO
 
 - test coverage
-- memory checks on build (valgrind or something)
+- add valgrind
+- add doxygen
