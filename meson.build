@@ -13,6 +13,9 @@ if sanitizer == 'address'
   link_args += ['-fsanitize=address']
 endif
 
+# Valgrind
+use_valgrind = get_option('use_valgrind')
+
 # Versioning
 project_version = meson.project_version()
 version_array = project_version.split('.')
@@ -52,7 +55,14 @@ test_executable = executable(
   link_with: ymir,
   c_args : c_args, link_args : link_args,
   dependencies : [check_dep])
-test('test_graphics', test_executable)
+
+if use_valgrind
+    valgrind_cmd = find_program('valgrind')
+    test_args = ['--leak-check=full', '--error-exitcode=1', test_executable]
+    test('vg_test_graphics', valgrind_cmd, args: test_args)
+else
+    test('test_graphics', test_executable)
+endif
 
 # Installation
 header_files = files('include/ymir/fs.h', 'include/ymir/graphics.h')

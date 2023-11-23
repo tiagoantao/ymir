@@ -23,7 +23,7 @@ meson test
 ```
 
 
-## Sanitizer use
+## Sanitizer and Valgrind use
 
 Build with:
 
@@ -31,6 +31,11 @@ Build with:
 meson setup build -Duse_sanitizer=address
 ```
 
+or:
+
+```sh
+meson setup build -Duse_valgrind=true
+```
 
 
 # Requirements
@@ -47,5 +52,4 @@ apt-get install libpng
 # TODO
 
 - test coverage
-- add valgrind
 - add doxygen
