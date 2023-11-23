@@ -14,7 +14,7 @@ conf.set('VERSION_MINOR', version_minor)
 conf.set('VERSION_PATCH', version_patch)
 
 # Dependencies
-glib_dep = dependency('glib-2.0', version : '>= 2.40', required : true)
+#glib_dep = dependency('glib-2.0', version : '>= 2.40', required : true)
 png_dep = dependency('libpng', required : true)
 
 # Dev dependencies
@@ -29,7 +29,7 @@ src_files = files('src/fs.c', 'src/graphics.c')
 # Library
 ymir = library('ymir',
   src_files, include_directories : inc_dirs, install : true,
-  dependencies : [glib_dep, png_dep])
+  dependencies : [png_dep])
 
 
 # Tests
@@ -49,3 +49,7 @@ install_headers(header_files, subdir : 'ymir')
 # Configuration
 #configure_file(output : 'config.h', configuration : conf)
 
+
+ymir_dep = declare_dependency(
+  include_directories : inc_dirs,
+  link_with : ymir)
