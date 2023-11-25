@@ -18,10 +18,6 @@ use_valgrind = get_option('use_valgrind')
 
 # Coverage - part 1
 do_coverage = get_option('b_coverage')
-if do_coverage
-  c_args += ['-fprofile-arcs', '-ftest-coverage']
-  link_args += ['-fprofile-arcs']
-endif
 
 # Versioning
 project_version = meson.project_version()
