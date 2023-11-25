@@ -29,7 +29,7 @@ Coverage results are produced in `build/coverage.xml`
 Build with:
 
 ```sh
-meson setup build -Duse_sanitizer=address
+meson setup build -Db_sanitizer=address
 ```
 
 or:

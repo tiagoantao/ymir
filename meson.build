@@ -8,10 +8,10 @@ sanitizer = get_option('use_sanitizer')
 c_args = []
 link_args = []
 
-if sanitizer == 'address'
-  c_args += ['-fsanitize=address']
-  link_args += ['-fsanitize=address']
-endif
+#if sanitizer == 'address'
+#  c_args += ['-fsanitize=address']
+#  link_args += ['-fsanitize=address']
+#endif
 
 # Valgrind
 use_valgrind = get_option('use_valgrind')
