@@ -1,15 +1,17 @@
 #include <png.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "ymir/graphics.h"
 
 
-void read_png(const char *filename, pixel_t ***out_image, int *out_height, int *out_width) {
+void read_png(const char *filename, pixel_t ***out_image, int *out_height,
+              int *out_width) {
     FILE *fp = fopen(filename, "rb");
     if (!fp) abort();
 
-    png_structp png = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+    png_structp png =
+        png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
     if (!png) abort();
 
     png_infop info = png_create_info_struct(png);
@@ -55,9 +57,10 @@ void read_png(const char *filename, pixel_t ***out_image, int *out_height, int *
 
 void write_png(const char *filename, pixel_t **image, int height, int width) {
     FILE *fp = fopen(filename, "wb");
-    if(!fp) abort();
+    if (!fp) abort();
 
-    png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+    png_structp png =
+        png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
     if (!png) abort();
 
     png_infop info = png_create_info_struct(png);
@@ -67,16 +70,9 @@ void write_png(const char *filename, pixel_t **image, int height, int width) {
 
     png_init_io(png, fp);
 
-    png_set_IHDR(
-        png,
-        info,
-        width, height,
-        8,
-        PNG_COLOR_TYPE_RGB,
-        PNG_INTERLACE_NONE,
-        PNG_COMPRESSION_TYPE_DEFAULT,
-        PNG_FILTER_TYPE_DEFAULT
-    );
+    png_set_IHDR(png, info, width, height, 8, PNG_COLOR_TYPE_RGB,
+                 PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
+                 PNG_FILTER_TYPE_DEFAULT);
     png_write_info(png, info);
 
     for (int y = 0; y < height; y++) {
@@ -87,21 +83,20 @@ void write_png(const char *filename, pixel_t **image, int height, int width) {
 
     fclose(fp);
 
-    if (png && info)
-        png_destroy_write_struct(&png, &info);
+    if (png && info) png_destroy_write_struct(&png, &info);
 }
 
 
-pixel_t** alloc_image(int height, int width) {
-    pixel_t** image = (pixel_t**)malloc(height * sizeof(pixel_t *));
+pixel_t **alloc_image(int height, int width) {
+    pixel_t **image = (pixel_t **)malloc(height * sizeof(pixel_t *));
     for (int y = 0; y < height; y++) {
-        image[y] = (pixel_t*)malloc(width * sizeof(pixel_t));
+        image[y] = (pixel_t *)malloc(width * sizeof(pixel_t));
     }
     return image;
 }
 
 
-void free_image(pixel_t** image, int height) {
+void free_image(pixel_t **image, int height) {
     for (int y = 0; y < height; y++) {
         free(image[y]);
     }

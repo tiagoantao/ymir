@@ -58,7 +58,7 @@ Specified as Debian-based dependencies. Similar packages should exist
 for other Linuxes (and *nix derivatives).
 
 ```sh
-apt-get install meson ninja-build check doxygen gcovr
+apt-get install meson ninja-build check doxygen gcovr clang-format
 
 apt-get install libpng
 ```
@@ -66,3 +66,5 @@ apt-get install libpng
 # TODO
 
 - add doxygen
+- add git hooks
+    - clang-format

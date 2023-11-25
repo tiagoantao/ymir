@@ -34,7 +34,7 @@ START_TEST(test_write_png) {
 END_TEST
 
 
-START_TEST(test_read_png){
+START_TEST(test_read_png) {
     pixel_t **image = NULL;
     int height = 0;
     int width = 0;
@@ -46,7 +46,8 @@ START_TEST(test_read_png){
     ck_assert(height == 1000);
     ck_assert(width == 2000);
 
-    // Add more checks here if necessary, for example, inspecting some pixel values
+    // Add more checks here if necessary, for example, inspecting some pixel
+    // values
 
     // Free the allocated memory
     for (int y = 0; y < height; y++) {
@@ -69,7 +70,7 @@ Suite *graphics_suite(void) {
 }
 
 
-int main(void){
+int main(void) {
     int number_failed;
     Suite *s;
     SRunner *sr;
