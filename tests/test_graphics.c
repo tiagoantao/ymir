@@ -6,6 +6,7 @@
 #include "ymir/fs.h"
 #include "ymir/graphics.h"
 
+
 START_TEST(test_write_png) {
     int width = 100;
     int height = 100;
