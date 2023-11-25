@@ -16,9 +16,6 @@ link_args = []
 # Valgrind
 use_valgrind = get_option('use_valgrind')
 
-# Coverage - part 1
-do_coverage = get_option('b_coverage')
-
 # Versioning
 project_version = meson.project_version()
 version_array = project_version.split('.')
@@ -59,18 +56,6 @@ test_executable = executable(
   c_args : c_args, link_args : link_args,
   dependencies : [check_dep])
 
-
-# Coverage
-if do_coverage
-  gcovr = find_program('gcovr', required : false)
-  basic_args = ['--root', meson.current_source_dir(),
-              meson.current_build_dir(),
-              '--exclude',
-              meson.current_source_dir() / 'tests/*',
-              ]
-  #test('coverage', gcovr, args: basic_args)
-  test('coverage_xml', gcovr, args: basic_args + ['--xml-pretty', '--output', 'coverage.xml'])
-endif
 
 # Valgrind
 if use_valgrind

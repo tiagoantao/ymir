@@ -14,15 +14,28 @@ Tested on Linux only.
 
 ```sh
 rm -rf build
-meson setup build -Db_coverage=true
+meson setup build
 
 meson compile -C build
 
 meson test -C build
+
 ```
 
-Coverage results are produced in `build/coverage.xml`
 
+## Testing and coverage
+
+Build with:
+
+```sh
+meson setup build -Db_coverage=true
+```
+
+After testing, get coverage with:
+
+```sh
+ninja coverage -c build
+```
 
 ## Sanitizer and Valgrind use
 
@@ -52,5 +65,4 @@ apt-get install libpng
 
 # TODO
 
-- test coverage
 - add doxygen
