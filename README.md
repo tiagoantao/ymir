@@ -13,13 +13,12 @@ Tested on Linux only.
 
 
 ```sh
-meson setup build
+rm -rf build
+meson setup build -Db_coverage=true
 
-cd build
+meson compile -C build
 
-meson compile
-
-meson test
+meson test -C build
 ```
 
 Coverage results are produced in `build/coverage.xml`
